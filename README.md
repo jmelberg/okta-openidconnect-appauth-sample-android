@@ -25,9 +25,9 @@ Once the project is cloned, simply open the project in [Android Studio](https://
 Update the **kIssuer**, **kClientID**, and **kRedirectURI** in your `OktaConfiguration.java` file:
 ```java
 public class OktaConfiguration {
-    public String kIssuer = "https://example.com";
-    public String kClientID = "CLIENT_ID";
-    public String kRedirectURI = "com.example:/openid";
+    public String kIssuer = "https://example.com";        // Base url of Okta Developer domain
+    public String kClientID = "CLIENT_ID";                // Client ID of Application
+    public String kRedirectURI = "com.example:/openid";   // Reverse DNS notation of base url with openid route
     public String kAppAuthExampleAuthStateKey = "com.okta.openid.authState";
     public String apiEndpoint = "https://example.server.com";
 
@@ -63,7 +63,7 @@ Interacts with the Authorization Server by using the discovered values from the 
   }
 ```
 ###Get User Info
-If the user is authenticated, fresh tokens are generated for calling the `/userinfo` endpoint to retrieve user data. If received, the output is printed to the console and a UIAlert.
+If the user is authenticated, fresh tokens are generated for calling the [`/userinfo`](http://developer.okta.com/docs/api/resources/oidc#get-user-information) endpoint to retrieve user data. If received, the output is printed to the console and a UIAlert.
 
 ###Refresh Tokens
 The AppAuth method `performTokenRequst` is used to refresh the current **access token** if the user is authenticated.
